@@ -1,0 +1,20 @@
+    <?xml version="1.0" encoding="UTF-8"?>
+    <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+            id="cordova-plugin-digitalstar" version="0.0.1">
+        <name>Digital Star</name>
+        <description>Cordova Digital Star Plugin</description>
+        <license>Apache 2.0</license>
+        <keywords>cordova,digital,star</keywords>
+        <js-module src="www/ds.js" name="digitalStar">
+            <clobbers target="digitalStar" />
+        </js-module>
+        <platform name="ios">
+            <config-file target="config.xml" parent="/*">
+                <feature name="DigitalStar">
+                    <param name="ios-package" value="CDVDigitalStar"/>
+                </feature>
+            </config-file>
+            <header-file src="src/ios/CDVDigitalStar.h" />
+            <source-file src="src/ios/CDVDigitalStar.m" />
+        </platform>
+    </plugin>
