@@ -3,29 +3,29 @@ Cordova plugin for Digital Star platform
 
 TODO: Platform info
 
-##3 methods for init
+## 3 methods for init
 
-###init
+### init
 TODO: init info
-###setServer
+### setServer
 TODO: setServer info
-###appStart
+### appStart
 TODO: appStart info
-###getClusterData
+### getClusterData
 TODO
-###setLocale
+### setLocale
 TODO
-###setActivateOfferCallBackUrl
+### setActivateOfferCallBackUrl
 TODO
-###userSeeDSOffers
+### userSeeDSOffers
 TODO
-###checkDSCardsInstalled
+### checkDSCardsInstalled
 TODO
-###openOffer
+### openOffer
 TODO
-###openCluster
+### openCluster
 TODO
-###openDSCards
+### openDSCards
 TODO
 
 That's all
