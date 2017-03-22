@@ -11,16 +11,28 @@ TODO: init info
 TODO: setServer info
 ### appStart
 TODO: appStart info
+
+## Then get data
+
 ### getClusterData
 TODO
+
+## Set options
+
 ### setLocale
 TODO
 ### setActivateOfferCallBackUrl
 TODO
+
+## When user see offerlist
+
 ### userSeeDSOffers
 TODO
 ### checkDSCardsInstalled
 TODO
+
+## When offer clicked
+
 ### openOffer
 TODO
 ### openCluster
@@ -28,4 +40,4 @@ TODO
 ### openDSCards
 TODO
 
-That's all
+# That's all
