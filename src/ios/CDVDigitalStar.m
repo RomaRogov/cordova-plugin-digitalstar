@@ -113,6 +113,12 @@
 	[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId:command.callbackId];
 }
 
+//Checks if DS Cards app intalled
+- (void)checkDSCardsInstalled:(CDVInvokedUrlCommand*)command
+{
+	[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool: [DSCards checkInstalledDSCards]] callbackId:command.callbackId];
+}
+
 //Open offer in DS app
 - (void)openOffer:(CDVInvokedUrlCommand*)command
 {

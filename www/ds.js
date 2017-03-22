@@ -92,7 +92,7 @@ DigitalStar.CheckDSCardsInstalledResponse = {
 
 /**
  * @callback initErrorCallback
- * @param InitResponse errorCode
+ * @param {InitResponse} errorCode
  */
 /**
  * @param {successCallback} successCallback
@@ -112,7 +112,7 @@ DigitalStar.setServer = function (serverType, successCallback) {
 
 /**
  * @callback appStartErrorCallback
- * @param AppStartResponse errorCode
+ * @param {AppStartResponse} errorCode
  */
 /**
  * @param {successCallback} successCallback
@@ -124,11 +124,11 @@ DigitalStar.appStart = function (successCallback, errorCallback) {
 
 /**
  * @callback getClusterDataSuccessCallback
- * @param string data - JSON Response string
+ * @param {string} data - JSON Response string
  */
 /**
  * @callback getClusterDataErrorCallback
- * @param GetClusterDataResponse errorCode
+ * @param {GetClusterDataResponse} errorCode
  */
 /**
  * @param {boolean} isFirstStart - Defines is app just started or resumed from background
@@ -156,6 +156,17 @@ DigitalStar.setActivateOfferCallBackUrl = function (url) {
 
 DigitalStar.userSeeDSOffers = function () {
     cordova.exec(function () { }, function () { }, "DigitalStar", "userSeeDSOffers", []);
+}
+
+/**
+ * @callback checkDSCardsInstalledCallback
+ * @param {boolean} isInstalled
+ */
+/**
+ * @param {checkDSCardsInstalledCallback} sucessCallback
+ */
+DigitalStar.checkDSCardsInstalled = function (successCallback) {
+    cordova.exec(function () { }, function () { }, "DigitalStar", "checkDSCardsInstalled", []);
 }
 
 /**
