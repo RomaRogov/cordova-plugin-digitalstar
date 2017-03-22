@@ -1,20 +1,57 @@
-    <?xml version="1.0" encoding="UTF-8"?>
-    <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-            id="cordova-plugin-digitalstar" version="0.0.1">
+<?xml version="1.0" encoding="UTF-8"?>
+    <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-digitalstar" version="0.0.1">
         <name>Digital Star</name>
         <description>Cordova Digital Star Plugin</description>
         <license>Apache 2.0</license>
         <keywords>cordova,digital,star</keywords>
-        <js-module src="www/ds.js" name="digitalStar">
-            <clobbers target="digitalStar" />
+        <js-module src="www/ds.js" name="DigitalStar">
+            <clobbers target="DigitalStar" />
         </js-module>
+        <preference name="SERVICE_ID" />
+        <preference name="API_KEY" />
+        <preference name="CLUSTER_ID" />
         <platform name="ios">
             <config-file target="config.xml" parent="/*">
                 <feature name="DigitalStar">
-                    <param name="ios-package" value="CDVDigitalStar"/>
+                    <param name="ios-package" value="CDVDigitalStar" />
                 </feature>
             </config-file>
+
             <header-file src="src/ios/CDVDigitalStar.h" />
             <source-file src="src/ios/CDVDigitalStar.m" />
+
+            <config-file target="*-Info.plist" parent="DigitalStarServiceID">
+                <string>$SERVICE_ID</string>
+            </config-file>
+            <config-file target="*-Info.plist" parent="DigitalStarApiKey">
+                <string>$API_KEY</string>
+            </config-file>
+            <config-file target="*-Info.plist" parent="DigitalStarClusterID">
+                <string>$CLUSTER_ID</string>
+            </config-file>
+            <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+                <array>
+                    <string>dscards</string>
+                </array>
+            </config-file>
+
+            <framework src="src/ios/DigitalStarCards.framework" custom="true" />
+        </platform>
+        <platform name="android">
+            <config-file target="config.xml" parent="/*">
+                <feature name="DigitalStar">
+                    <param name="android-package" value="org.apache.cordova.plugin.DigitalStar" />
+                </feature>
+            </config-file>
+          
+            <source-file src="src/android/parameters.xml" target-dir="res/values/" />
+            <config-file target="res/values/parameters.xml" parent="/*">
+              <string name="service_id_param">$SERVICE_ID</string>
+              <string name="api_key_param">$API_KEY</string>
+              <string name="cluster_id_param">$CLUSTER_ID</string>
+            </config-file>
+          
+            <lib-file src="src/android/DigitalStarCards_3.0.1.jar"/>
+            <source-file src="src/android/DigitalStar.java" target-dir="src/org/apache/cordova/plugin" />
         </platform>
     </plugin>
