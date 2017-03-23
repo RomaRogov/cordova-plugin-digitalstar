@@ -142,20 +142,25 @@ DigitalStar.getClusterData = function (isFirstStart, successCallback, errorCallb
 /**
  * @param {string} locale
  * @param {string} country
+ * @param {successCallback} doneCallback
  */
-DigitalStar.setLocale = function (locale, country) {
-    cordova.exec(function () { }, function () { }, "DigitalStar", "setLocale", [locale, country]);
+DigitalStar.setLocale = function (locale, country, doneCallback) {
+    cordova.exec(doneCallback, function () { }, "DigitalStar", "setLocale", [locale, country]);
 }
 
 /**
  * @param {string} url
+ * @param {successCallback} doneCallback
  */
-DigitalStar.setActivateOfferCallBackUrl = function (url) {
-    cordova.exec(function () { }, function () { }, "DigitalStar", "setActivateOfferCallBackUrl", [url]);
+DigitalStar.setActivateOfferCallBackUrl = function (url, doneCallback) {
+    cordova.exec(doneCallback, function () { }, "DigitalStar", "setActivateOfferCallBackUrl", [url]);
 }
 
-DigitalStar.userSeeDSOffers = function () {
-    cordova.exec(function () { }, function () { }, "DigitalStar", "userSeeDSOffers", []);
+/*
+ * @param {successCallback} doneCallback
+ */
+DigitalStar.userSeeDSOffers = function (doneCallback) {
+    cordova.exec(doneCallback, function () { }, "DigitalStar", "userSeeDSOffers", []);
 }
 
 /**
@@ -163,10 +168,10 @@ DigitalStar.userSeeDSOffers = function () {
  * @param {boolean} isInstalled
  */
 /**
- * @param {checkDSCardsInstalledCallback} sucessCallback
+ * @param {checkDSCardsInstalledCallback} doneCallback
  */
-DigitalStar.checkDSCardsInstalled = function (successCallback) {
-    cordova.exec(function () { }, function () { }, "DigitalStar", "checkDSCardsInstalled", []);
+DigitalStar.checkDSCardsInstalled = function (doneCallback) {
+    cordova.exec(doneCallback, function () { }, "DigitalStar", "checkDSCardsInstalled", []);
 }
 
 /**
@@ -175,10 +180,11 @@ DigitalStar.checkDSCardsInstalled = function (successCallback) {
  */
 /**
  * @param {string} offerID
+ * @param {successCallback} successCallback
  * @param {openOfferErrorCallback} errorCallback
  */
-DigitalStar.openOffer = function (offerID, errorCallback) {
-    cordova.exec(function () { }, errorCallback, "DigitalStar", "openOffer", [offerID]);
+DigitalStar.openOffer = function (offerID, successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, "DigitalStar", "openOffer", [offerID]);
 }
 
 /**
@@ -187,17 +193,19 @@ DigitalStar.openOffer = function (offerID, errorCallback) {
  */
 /**
  * @param {string} clusterID
+ * @param {successCallback} successCallback
  * @param {openClusterErrorCallback} errorCallback
  */
-DigitalStar.openCluster = function (clusterID, errorCallback) {
-    cordova.exec(function () { }, errorCallback, "DigitalStar", "openCluster", [clusterID]);
+DigitalStar.openCluster = function (clusterID, successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, "DigitalStar", "openCluster", [clusterID]);
 }
 
 /**
+ * @param {successCallback} successCallback
  * @param {openClusterErrorCallback} errorCallback
  */
-DigitalStar.openDSCards = function (errorCallback) {
-    cordova.exec(function () { }, errorCallback, "DigitalStar", "openDSCards", []);
+DigitalStar.openDSCards = function (successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, "DigitalStar", "openDSCards", []);
 }
 
 module.exports = DigitalStar;
