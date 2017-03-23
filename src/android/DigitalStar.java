@@ -94,6 +94,19 @@ class CheckDSCardsInstalledCallbackImp implements DSCards.CheckDSCardsInstalledC
 }
 
 
+class ArgumentCountException extends Exception
+{
+      //Parameterless Constructor
+      public ArgumentCountException() {}
+
+      //Constructor that accepts a message
+      public ArgumentCountException(String message)
+      {
+         super(message);
+      }
+ }
+
+
 /**
 * This class echoes a string called from JavaScript.
 */
@@ -111,20 +124,25 @@ public boolean execute(String action, JSONArray args, CallbackContext callbackCo
         if (action.equals("init")) {
             return init(callbackContext);    
         }  else if (action.equals("setServer")) {
+            assertArgs(args.length(), 1);
             return setServer(callbackContext, args.getInt(0));    
         } else if (action.equals("appStart")) {
             return appStart(callbackContext);
         } else if (action.equals("getClusterData")) {
+            assertArgs(args.length(), 1);
             return getClusterData(callbackContext, args.getBoolean(0));
         } else if (action.equals("setLocale")) {
+            assertArgs(args.length(), 2);
             return setLocale(callbackContext, args.getString(0), args.getString(1));
         } else if (action.equals("setActivateOfferCallBackUrl")) {
+            assertArgs(args.length(), 1);
             return setActivateOfferCallBackUrl(callbackContext, args.getString(0));
         }  else if (action.equals("userSeeDSOffers")) {
             return userSeeDSOffers(callbackContext);
         } else if (action.equals("checkDSCardsInstalled")) {
             return checkDSCardsInstalled(callbackContext);
         } else if (action.equals("openOffer")) {
+            assertArgs(args.length(), 1);
             return openOffer(callbackContext, args.getString(0));
         } else if (action.equals("openCluster")) {
             return openCluster(callbackContext);
@@ -133,8 +151,10 @@ public boolean execute(String action, JSONArray args, CallbackContext callbackCo
         } else {
             return false;
         }
+    } catch (ArgumentCountException e) {
+        callbackContext.error(999);  
     } catch (Exception e) {
-        callbackContext.error(1001);  
+        callbackContext.error(998);  
     }
     return true;
 }
@@ -221,6 +241,12 @@ private String getParameter(String name) {
 
     int apiKey = cordova.getActivity().getResources().getIdentifier(name, "string", cordova.getActivity().getPackageName());
     return cordova.getActivity().getString(apiKey);
+}
+    
+private void assertArgs(int count, int countTarget) throws ArgumentCountException {
+    if (count < countTarget) {
+        throw new ArgumentCountException();
+    }
 }
     
 }
