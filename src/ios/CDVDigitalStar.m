@@ -141,12 +141,7 @@
 //Open DS app (with cluster ID)
 - (void)openCluster:(CDVInvokedUrlCommand*)command
 {
-	if ([command.arguments count] < 1) {
-		[self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsInt:998] callbackId:command.callbackId];
-		return;
-	}
-
-	NSString* clusterID = [command.arguments objectAtIndex:0];
+	NSString* clusterID = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"DigitalStarClusterID"];
 
 	[DSCards openCluster:clusterID failure:^(DSOpenClusterOrOfferType dsOpenClusterOrOffer) {
 		if (dsOpenClusterOrOffer == CO_InvalidClusterID) { dsOpenClusterOrOffer = 1; }

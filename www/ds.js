@@ -192,12 +192,11 @@ DigitalStar.openOffer = function (offerID, successCallback, errorCallback) {
  * @param OpenClusterResponse errorCode
  */
 /**
- * @param {string} clusterID
  * @param {successCallback} successCallback
  * @param {openClusterErrorCallback} errorCallback
  */
-DigitalStar.openCluster = function (clusterID, successCallback, errorCallback) {
-    cordova.exec(successCallback, errorCallback, "DigitalStar", "openCluster", [clusterID]);
+DigitalStar.openCluster = function (successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, "DigitalStar", "openCluster", []);
 }
 
 /**
