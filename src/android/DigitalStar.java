@@ -219,7 +219,7 @@ private boolean openOffer(CallbackContext callbackContext, String offerID) {
 }
 
 private boolean openCluster (CallbackContext callbackContext) {
-    ds.openCluster(clusterId, new OpenClusterCallbackImp(callbackContext));
+    ds.openCluster(new OpenClusterCallbackImp(callbackContext));
     return true;
 }
 
